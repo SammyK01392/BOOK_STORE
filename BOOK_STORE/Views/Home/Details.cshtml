@@ -1,0 +1,79 @@
+﻿@model BOOK_STORE.Models.Category
+
+<div class="category-details my-5">
+    <!-- Category Name -->
+    <h2 class="text-center mb-4 text-primary">@Model.Name</h2>
+
+    <!-- Book List -->
+    <div class="row">
+        @foreach (var book in Model.Books)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0">
+                    <!-- Book Image -->
+                    <img src="/images/@book.ISBN" class="card-img-top img-fluid" alt="@book.Title" style="height: 300px; object-fit: cover;">
+
+                    <div class="card-body">
+                        <!-- Book Title -->
+                        <h5 class="card-title text-truncate">@book.Title</h5>
+
+                        <!-- Book Author -->
+                        <p class="card-text text-muted"><strong>By:</strong> @book.Author</p>
+
+                        <!-- Price -->
+                        <p class="card-text text-success"><strong>Price:</strong> $@book.Price</p>
+
+                        <!-- Book Description -->
+                        <p class="card-text small text-secondary" style="height: 60px; overflow: hidden; text-overflow: ellipsis;">@book.Description</p>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- View Details Button with correct area -->
+                            <a href="@Url.Action("Details", "Cart", new { area = " ", id = book.Id })" class="btn btn-primary btn-sm">View Details</a>
+
+                            <!-- Add to Cart Button -->
+                                 <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@book.Id" class="btn btn-success btn-lg">Add to Cart</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-title {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .text-success {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    .text-secondary {
+        line-height: 1.5;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-warning {
+        color: #fff;
+        background-color: #ff9900;
+        border-color: #ff9900;
+    }
+
+</style>

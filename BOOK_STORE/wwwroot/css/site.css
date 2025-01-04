@@ -1,0 +1,339 @@
+{
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Roboto', sans-serif; /* Use Google Fonts like Roboto or your preference */
+    background-color: #f3f4f6; /* Light gray background for the entire page */
+    color: #333;
+}
+
+/* Banner Styling with Background Image */
+.banner {
+    text-align: center;
+    padding: 40px 20px;
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+    .banner h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .banner p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+/* Layout */
+
+/* Hero Section or Navbar Background */
+header {
+    background: linear-gradient(to right, #314755, #26a0da); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #ffffff; /* White text for better contrast */
+}
+
+.navbar a.nav-link,
+.navbar a.navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+    .navbar a.nav-link:hover,
+    .navbar a.navbar-brand:hover {
+        color: #ffcc00; /* Gold color for hover effect */
+    }
+
+/* Button Styling */
+button, .btn-primary {
+    font-family: 'Roboto', sans-serif;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+    button:hover, .btn-primary:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+
+/* Additional Styling for Texts */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #2b3945; /* Navy color for headings */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #cccccc;
+}
+
+    .dropdown-menu a {
+        color: #333;
+    }
+
+        .dropdown-menu a:hover {
+            background-color: #f3f4f6;
+        }
+
+/* Search Bar */
+.search-bar {
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Card/Container Customizations */
+.container {
+   
+    background: linear-gradient(to right, #86fde8, #acb6e5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* White background for sections */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: #0056b3; /* Darker blue */
+    }
+
+/* Index page */
+/* General Styling */
+body {
+    background-color: #f8f9f; /* Light gray background */
+    font-family: 'Roboto', sans-serif; /* Modern and clean font */
+}
+
+/* Banner Section */
+.bg-banner {
+    background: url('/images/background.jpg') no-repeat center center/cover;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.banner p {
+    font-size: 1.25rem;
+}
+
+.banner a {
+    font-size: 1.25rem;
+    padding: 10px 30px;
+}
+
+/* Categories Section */
+.categories-section .category-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .categories-section .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+.categories-section h2 {
+    color: #2b3945; /* Dark navy */
+    font-weight: bold;
+}
+
+/* Featured Books Section */
+.featured-books .book-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .featured-books .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+.featured-books img.book-cover {
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.btn-primary, .btn-warning {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+    .btn-primary:hover, .btn-warning:hover {
+        background-color: #ffcc00; /* Bright gold hover for the button */
+        transform: scale(1.05);
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+    }
+
+    .categories-section, .featured-books {
+        padding: 10px;
+    }
+}
+
+.featured-reviews {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.reviews-section {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+.blockquote-footer {
+    background: transparent;
+    font-size: 0.9rem;
+    color: black;
+}
+
+img.rounded-circle {
+    border: 2px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .reviews-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Footer Styles */
+.footer {
+    background-color: #314755; 
+    color: #fff;
+    padding: 30px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-left {
+    font-size: 12px;
+}
+
+.footer-middle ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-middle li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-middle a {
+    color: #fff;
+    text-decoration: none;
+}
+
+    .footer-middle a:hover {
+        text-decoration: underline;
+    }
+
+.footer-right .social-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .footer-right .social-links li {
+        display: inline;
+        margin-right: 15px;
+    }
+
+    .footer-right .social-links .social-icon {
+        background-color: #555;
+        padding: 10px;
+        border-radius: 10%;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+        .footer-right .social-links .social-icon:hover {
+            background-color: #777;
+        }
+
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-middle ul {
+        margin: 1px 0;
+    }
+
+    .footer-right {
+        margin-top: 1px;
+    }
+}
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BOOK_STORE.Models.Book>
+
+<div class="category-page my-5">
+    <!-- Category Title -->
+    <h2 class="text-center mb-4 text-primary display-4">Books in Category</h2>
+
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <!-- Book Image -->
+                    <img src="/images/@book.ISBN" class="card-img-top img-fluid" alt="@book.Title" style="height: 200px; object-fit: cover;">
+
+                    <div class="card-body d-flex flex-column">
+                        <!-- Book Title -->
+                        <h5 class="card-title text-truncate" title="@book.Title">@book.Title</h5>
+
+                        <!-- Price -->
+                        <p class="card-text text-success font-weight-bold mb-2">$@book.Price.ToString("F2")</p>
+
+                        <!-- Stock Information -->
+                        @if (book.StockQuantity > 0)
+                        {
+                            <p class="text-success small"><i class="fas fa-check-circle"></i> In Stock (@book.StockQuantity)</p>
+                        }
+                        else
+                        {
+                            <p class="text-danger small"><i class="fas fa-times-circle"></i> Out of Stock</p>
+                        }
+
+                        <!-- View Details Button -->
+                        <a href="@Url.Action("Details", "Books", new { id = book.Id })" class="btn btn-primary mt-auto btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

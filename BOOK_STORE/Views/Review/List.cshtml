@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BOOK_STORE.Models.Review>
+@{
+    ViewBag.Title = "Reviews for " + ViewBag.BookTitle;
+}
+
+<h2>@ViewBag.BookTitle - Reviews</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rating</th>
+            <th>User</th>
+            <th>Review</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model)
+        {
+            <tr>
+                <td>@review.Rating</td>
+                <td>@review.User.FullName</td> <!-- Assuming User has a Name property -->
+                <td>@review.ReviewText</td>
+            </tr>
+        }
+    </tbody>
+</table>

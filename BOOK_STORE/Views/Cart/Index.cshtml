@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BOOK_STORE.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1 class="text-center mb-4">Books</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="img-container" style="height: 200px; overflow: hidden;">
+                        <img src="~/images/@book.ISBN" class="card-img-top" alt="@book.Title" style="width: 100%; height: 100%; object-fit: contain;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-truncate mb-2">@book.Title</h4>
+                        <p class="text-muted mb-1">By: @book.Author.Name</p>
+                        <p class="text-muted mb-1">Category: @book.Category.Name</p>
+                        <h5 class="text-primary mb-3">$@book.Price</h5>
+                        <p class="card-text text-muted text-truncate mb-3">@book.Description</p>
+                        <p class="text-success mb-2">Stock: @book.StockQuantity</p>
+                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@book.Id" class="btn btn-success btn-lg">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

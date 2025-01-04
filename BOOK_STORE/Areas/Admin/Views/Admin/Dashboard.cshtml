@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">📊 Admin Dashboard Overview</h2>
+
+    <!-- Statistics Row -->
+    <div class="row">
+
+        <!-- Total Books -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3 mb-4 bg-white rounded">
+                <div class="card-body">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">📚 Total Books</h5>
+                    <h2 class="card-text font-weight-bold text-dark">@ViewBag.TotalBooks</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Users -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3 mb-4 bg-white rounded">
+                <div class="card-body">
+                    <i class="fas fa-users fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">👥 Total Users</h5>
+                    <h2 class="card-text font-weight-bold text-dark">@ViewBag.TotalUsers</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Authors -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3 mb-4 bg-white rounded">
+                <div class="card-body">
+                    <i class="fas fa-user-tie fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">🖊️ Total Authors</h5>
+                    <h2 class="card-text font-weight-bold text-dark">@ViewBag.TotalAuthors</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Categories -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3 mb-4 bg-white rounded">
+                <div class="card-body">
+                    <i class="fas fa-tags fa-3x text-danger mb-3"></i>
+                    <h5 class="card-title">🏷️ Total Categories</h5>
+                    <h2 class="card-text font-weight-bold text-dark">@ViewBag.TotalCategories</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Cart Items -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3 mb-4 bg-white rounded">
+                <div class="card-body">
+                    <i class="fas fa-shopping-cart fa-3x text-info mb-3"></i>
+                    <h5 class="card-title">🛒 Total Cart Items</h5>
+                    <h2 class="card-text font-weight-bold text-dark">@ViewBag.TotalCartItems</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section: Detailed Statistics -->
+    <div class="mt-5">
+        <h4 class="mb-3">📈 Detailed Insights</h4>
+        <p class="lead">Track detailed metrics to analyze the bookstore performance.</p>
+        <ul>
+            <li><strong>Total Books:</strong> @ViewBag.TotalBooks available in the store.</li>
+            <li><strong>Total Users:</strong> @ViewBag.TotalUsers registered users.</li>
+            <li><strong>Total Authors:</strong> @ViewBag.TotalAuthors contributing authors.</li>
+            <li><strong>Total Categories:</strong> @ViewBag.TotalCategories book categories.</li>
+            <li><strong>Total Cart Items:</strong> @ViewBag.TotalCartItems items currently in user carts.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

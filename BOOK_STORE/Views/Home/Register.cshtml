@@ -1,0 +1,57 @@
+﻿@model BOOK_STORE.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h4 class="font-weight-bold text-center text-primary">User Registration</h4>
+<hr class="border-primary" />
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label font-weight-bold">Full Name</label>
+                <input asp-for="FullName" class="form-control" placeholder="Enter your full name" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label asp-for="Email" class="control-label font-weight-bold">Email Address</label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email address" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label asp-for="PasswordHash" class="control-label font-weight-bold">Password</label>
+                <input asp-for="PasswordHash" class="form-control" placeholder="Enter your password" type="password" />
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="form-group">
+                <label asp-for="Role" class="control-label font-weight-bold">Role</label>
+                <select asp-for="Role" class="form-control">
+                    <option value="customer">Customer</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group text-center">
+                <input type="submit" value="Create Account" class="btn btn-primary btn-lg w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr class="border-primary" />
+
+<div class="text-center">
+    <a asp-action="Index" class="btn btn-secondary btn-lg">Back to List</a>
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BOOK_STORE.Models.Review>
+
+@{
+    ViewData["Title"] = "Customer Reviews";
+}
+
+<h1 class="text-center mb-4">Read what our customers say</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var review in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm p-3">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-4">
+                            <p class="mb-0">@review.ReviewText</p>
+                        </blockquote>
+                        <footer class="blockquote-footer">
+                            <strong>@review.User.FullName</strong>, <em>@review.User.Role</em>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary" asp-action="Index">View More</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+}

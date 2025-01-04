@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BOOK_STORE.Models.Payment>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Payments List";
+}
+
+<h1>Payments List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Payment</a>
+    <a asp-action="ExportToExcel" class="btn btn-success">Export to Excel</a>
+    <button onclick="window.print()" class="btn btn-info">Print</button>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMethod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i> Details
+                    </a>
+                    |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Add Pagination if applicable -->
+<div class="pagination-container">
+    @* Add your pagination here if you're using something like PagedList or similar *@
+</div>

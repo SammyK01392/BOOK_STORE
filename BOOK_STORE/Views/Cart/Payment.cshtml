@@ -1,0 +1,68 @@
+﻿@model BOOK_STORE.Models.Order
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Payment for Order #@Model.Id</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="text-center mb-4">Total Amount: $@Model.TotalAmount</h4>
+
+            <form asp-action="Payment" asp-route-orderId="@Model.Id" method="post">
+                <div class="form-group">
+                    <label for="paymentMethod">Select Payment Method:</label>
+                    <select id="paymentMethod" name="paymentMethod" class="form-control" required>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-lg">Complete Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Adding some custom CSS for better presentation -->
+<style>
+    .container {
+        max-width: 600px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: #333;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        color: #555;
+    }
+
+    .form-group label {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .card {
+        border-radius: 10px;
+        border: none;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+</style>

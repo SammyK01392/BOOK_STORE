@@ -1,0 +1,54 @@
+﻿@model BOOK_STORE.Models.User
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- User Profile Section -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <img src="/images/UserIcon.jpg" alt="Profile Picture" class="rounded-circle mt-3" style="width: 150px; height: 150px;">
+                <div class="card-body">
+                    <h4>@Model.FullName</h4>
+                    <p>@Model.Email</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Orders Section -->
+        <div class="col-md-8">
+            <h3>Your Orders</h3>
+            @if (Model.Orders.Count() > 0)  
+            {
+                <div class="accordion" id="ordersAccordion">
+                    @foreach (var order in Model.Orders)
+                    {
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="orderHeading-@order.Id">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#orderCollapse-@order.Id" aria-expanded="false">
+                                    Order #@order.Id - @order.OrderDate.ToShortDateString() - @order.Status
+                                </button>
+                            </h2>
+                            <div id="orderCollapse-@order.Id" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p><strong>Total Amount:</strong> $@order.TotalAmount</p>
+                                    <h6>Order Items:</h6>
+                                    <ul>
+                                        @foreach (var item in order.OrderItems)
+                                        {
+                                            <li>
+                                                Product ID: @item.Id - Quantity: @item.Quantity - Price: $@item.Price
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>You have no orders.</p>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿<div class="about-container">
+    <div class="about-content">
+        <h2>About Us</h2>
+        <p>At <strong>Book_store</strong>, we celebrate the magic of books. Whether you're searching for a gripping novel, inspiring non-fiction, or a delightful children’s story, our shelves are filled with treasures waiting to be discovered.</p>
+        <p>Join us for a journey of stories, knowledge, and community. From book signings to personalized recommendations, we’re here to make every visit special.</p>
+        <a asp-action="Developer" class="button">Learn More</a>
+    </div>
+    <div class="about-image">
+        <img src=" c:\users\admin\source\repos\book_store\book_store\wwwroot\images\free book.jpg" />
+    </div>
+</div>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+   
+    .about-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .about-content {
+        max-width: 600px;
+        text-align: left;
+    }
+
+        .about-content h2 {
+            color: #ff6f61;
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ff6f61;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        .button:hover {
+            background-color: #e85950;
+        }
+
+    .about-image img {
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+    }
+
+</style>
+

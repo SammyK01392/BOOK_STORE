@@ -1,0 +1,29 @@
+﻿
+
+@model IEnumerable<BOOK_STORE.Models.Review>
+
+<h1>Reviews for @ViewBag.Book.Title</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Rating</th>
+            <th>Review</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model)
+        {
+            <tr>
+                <td>@review.User.FullName</td>
+                <td>@review.Rating / 5</td>
+                <td>@review.ReviewText</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Home/AddReview?bookId=@ViewBag.Book.Id" class="btn btn-primary">Add a Review</a>
+
+

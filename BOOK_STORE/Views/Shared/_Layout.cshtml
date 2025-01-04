@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BOOK_STORE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BOOK_STORE.styles.css" asp-append-version="true" />
+    
+   
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/LOGO-removebg-preview.png" alt="BOOK_STORE Logo" style="height: 40px; width: auto; margin-right: 10px;" />
+                    READ_SPHERE
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         
+                        <form class="d-flex me-auto" asp-controller="Home" asp-action="Search" method="get">
+                            <input class="form-control me-2 search-bar" type="search" name="searchString" placeholder="Search for books" aria-label="Search">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                    <div>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Index">Inventery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Cart">Cart</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="Home" asp-action="Category" asp-route-id="@category.Id">
+                                                @category.Name
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Developer" class="nav-link">Developer </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (Context.Session.GetString("UserSession") != null)
+                                {
+                                    <img src="@Context.Session.GetString("UserImage")" alt="Profile" style="width:30px; height:30px; border-radius:50%; margin-right:5px;">
+                                    @Context.Session.GetString("UserSession")
+                                }
+                                else
+                                {
+                                    <span>Account</span>
+                                }
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                @if (Context.Session.GetString("UserSession") != null)
+                                {
+                                    <li><a class="dropdown-item" href="#">@Context.Session.GetString("UserSession")</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Profile">Your Profile</a></li>
+                                    <li><a asp-controller="Home" asp-action="Logout" class="dropdown-item">Logout</a></li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Home" asp-action="Login" class="dropdown-item">Login</a></li>
+                                }
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-dark text-white py-3 mt-4">
+      
+        <div class="container text-center">
+            <div class="footer-middle">
+                <ul>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+
+                </ul>
+            </div>
+            <p>&copy; 2024 Book Store Develop By Sameer Karale . All rights reserved.</p>
+            <div class="footer-right">
+                <ul class="social-links">
+                    <li><a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i> FB</a></li>
+                    <li><a href="#" target="_blank" class="social-icon"><i class="fab fa-twitter"></i> TW</a></li>
+                    <li><a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i> IN</a></li>
+                    <li><a href="#" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i> LI</a></li>
+
+                </ul>
+            </div>
+        </div>
+       
+    </footer>
+
+  
+  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

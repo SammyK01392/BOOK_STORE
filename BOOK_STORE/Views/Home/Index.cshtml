@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Home - Bookstore";
+}
+
+<div class="container">
+    <!-- Banner Section -->
+    <div class="banner text-center py-5 bg-banner mb-5">
+        <h1 class="display-4 text-white">Welcome to the Bookstore</h1>
+        <p class="lead text-light">Your one-stop shop for books of all genres!</p>
+        <a class="btn btn-warning btn-lg" href="/Cart/Index">Shop Now</a>
+    </div>
+
+   
+
+    <!-- Categories Section -->
+    <div class="categories-section my-5">
+        <h2 class="text-center mb-4">Browse by Categories</h2>
+        <div class="row">
+            @foreach (var category in ViewBag.Categories)
+            {
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="category-card p-4 border rounded shadow-sm text-center">
+                        <h4 class="text-dark">@category.Name</h4>
+                        <p class="text-muted">@($"Books available: {category.BookCount}")</p>
+                        <a href="/Home/Details/@category.Id" class="btn btn-outline-secondary btn-sm">Explore</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Featured Books Section -->
+    <div class="featured-books my-5">
+        <h2 class="text-center mb-4">Featured Books</h2>
+        <div class="row">
+            @foreach (var book in ViewBag.FeaturedBooks)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="book-card border rounded shadow-sm p-3 text-center">
+                        <img src="/images/@book.ISBN" alt="@book.Title" class="img-fluid mb-3 book-cover">
+                        <h5 class="text-dark">@book.Title</h5>
+                        <p class="text-muted">@book.AuthorName</p>
+                        <p class="text-primary font-weight-bold">$@book.Price</p>
+                        <a href="/Home/Details/@book.Id" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-section my-5">
+        <h2 class="text-center mb-4">Read what our customers say</h2>
+        <div class="row">
+            @foreach (var review in ViewBag.review)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm p-3 h-100">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-4">
+                                <p class="mb-0">@review.ReviewText</p>
+                            </blockquote>
+                            <footer class="blockquote-footer d-flex align-items-center">
+                                <img src="" alt="@review.User.FullName" class="rounded-circle me-2" style="width: 50px; height: 50px;">
+                                <div>
+                                    <strong>@review.User.FullName</strong><br>
+                                    <em>@review.User.Role</em>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+        <div class="text-center mt-4">
+            <a class="btn btn-primary" asp-action="Reviews">View All Reviews</a>
+        </div>
+    </div>
+</div>
+
+<partial name="About">
+                            <

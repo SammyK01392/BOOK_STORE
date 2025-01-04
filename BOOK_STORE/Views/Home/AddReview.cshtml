@@ -1,0 +1,64 @@
+﻿@model BOOK_STORE.Models.Book
+
+@{
+    ViewData["Title"] = "Add Review for " + Model.Title;
+}
+
+<h1>Add Review for @Model.Title</h1>
+
+<!-- Display Book Details (Optional) -->
+<div>
+    <h2>@Model.Title</h2>
+    <p><strong>Author:</strong> @Model.Author</p>
+    <p>@Model.Description</p>
+</div>
+
+<!-- Display Existing Reviews -->
+<h3>Reviews</h3>
+@if (Model.Reviews != null && Model.Reviews.Any())
+{
+    <ul>
+        @foreach (var review in Model.Reviews)
+        {
+            <li>
+                <strong>@review.User.FullName</strong> (Rating: @review.Rating)
+                <p>@review.ReviewText</p>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No reviews yet. Be the first to review this book!</p>
+}
+
+<!-- Review Submission Form -->
+<h3>Submit Your Review</h3>
+<form asp-action="AddReview" method="post">
+    <div class="form-group">
+        <label for="ReviewText">Review Text</label>
+        <textarea id="ReviewText" name="reviewText" class="form-control" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Rating">Rating</label>
+        <select id="Rating" name="rating" class="form-control" required>
+            <option value="">Select a Rating</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+
+<!-- Display Validation Errors -->
+@foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+{
+    <div class="alert alert-danger">
+        @error.ErrorMessage
+    </div>
+}

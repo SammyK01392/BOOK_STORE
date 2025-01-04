@@ -1,0 +1,120 @@
+﻿@model IEnumerable<BOOK_STORE.Models.Book>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Book Store Management";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Book Store Management</h1>
+        <a asp-action="Create" class="btn btn-primary btn-lg">Add New Book</a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="mb-4">
+        <input type="text" class="form-control" id="searchBook" placeholder="Search by title, author, or ISBN..." />
+    </div>
+
+    <!-- Filters -->
+    <div class="d-flex justify-content-between mb-4">
+        <div>
+            <label for="categoryFilter" class="form-label">Filter by Category</label>
+            <select id="categoryFilter" class="form-select" aria-label="Filter by Category">
+                <option selected>All Categories</option>
+                <option>Fiction</option>
+                <option>Non-fiction</option>
+                <option>Science</option>
+                <option>Technology</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="authorFilter" class="form-label">Filter by Author</label>
+            <select id="authorFilter" class="form-select" aria-label="Filter by Author">
+                <option selected>All Authors</option>
+                <option>Author 1</option>
+                <option>Author 2</option>
+                <option>Author 3</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Book Cards Grid -->
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="~/images/@Html.DisplayFor(modelItem => item.ISBN)" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p class="card-text">
+                            <strong>Price: </strong>@Html.DisplayFor(modelItem => item.Price) <br>
+                            <strong>Stock: </strong>@Html.DisplayFor(modelItem => item.StockQuantity)
+                        </p>
+                        <p class="card-text" style="font-size: 14px; color: gray;">
+                            <strong>Category: </strong>@Html.DisplayFor(modelItem => item.Category.Name) <br>
+                            <strong>Author: </strong>@Html.DisplayFor(modelItem => item.Author.Name)
+                        </p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">1</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Optional: Include Bootstrap JS if not already added -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Simple Search Functionality (Client-Side Filtering)
+    $('#searchBook').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $(".card").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+
+    // Filter by Category
+    $('#categoryFilter').on('change', function() {
+        var category = $(this).val();
+        console.log('Filtering by category: ' + category);
+        // Add backend filtering logic here (optional)
+    });
+
+    // Filter by Author
+    $('#authorFilter').on('change', function() {
+        var author = $(this).val();
+        console.log('Filtering by author: ' + author);
+        // Add backend filtering logic here (optional)
+    });
+</script>

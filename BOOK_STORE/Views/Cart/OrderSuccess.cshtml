@@ -1,0 +1,44 @@
+﻿@model BOOK_STORE.Models.Order
+
+@{
+    ViewData["Title"] = "Order Success";
+}
+
+<div class="text-center mt-5">
+    <h1>Thank You for Your Order!</h1>
+    <p>Your order has been successfully placed and is now being processed for shipping.</p>
+</div>
+
+<hr />
+
+<h3>Order Details</h3>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderItems)
+            {
+                <tr>
+                    <td>@item.Book.Title</td>
+                    <td>@item.Quantity</td>
+                    <td>$@item.Price</td>
+                    <td>$@(item.Quantity * item.Price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h4 class="text-right">Grand Total: $@Model.TotalAmount</h4>
+</div>
+
+<hr />
+
+<div class="text-center mt-4">
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-lg">Continue Shopping</a>
+</div>

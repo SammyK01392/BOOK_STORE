@@ -1,0 +1,42 @@
+﻿@model BOOK_STORE.Models.Review
+
+@{
+    ViewData["Title"] = "Create Review";
+}
+
+<h2>Create Review</h2>
+
+<form asp-action="CreateReview" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="BookId">Book</label>
+
+        <span asp-validation-for="BookId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ReviewText">Review Text</label>
+        <textarea asp-for="ReviewText" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="ReviewText" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Rating">Rating</label>
+        <input asp-for="Rating" class="form-control" type="number" min="1" max="5" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <!-- Hidden field to store the UserId (the logged-in user) -->
+    <input type="hidden" asp-for="UserId" />
+
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,29 @@
+﻿
+
+@model IEnumerable<BOOK_STORE.Models.User>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<h2>Manage Users</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.FullName</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+        </tr>
+    }
+</table>
+
+<a asp-action="Dashboard">Back to Dashboard</a>
